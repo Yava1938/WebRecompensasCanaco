@@ -1,0 +1,17 @@
+<div class="container card" style="padding-top: 20px; width: 25rem;">
+  <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <h4 style="text-align: center;">Ingrese como Admin</h4>
+    <hr><br>
+    <div class="form-group">
+    <input type="text" class="form-control form-control" placeholder="Usuario" required="true" autofocus="" formControlName="User">
+    <br>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control form-control" placeholder="Contraseña" required="true" autofocus="" formControlName="Password">
+    <br></div>
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button><br>
+    <p style="text-align: center;">¿Olvidaste tu contraseña? <a href="#">Clic aquí</a></p><br>
+  </form>
+</div>
+<br><br><br>
+

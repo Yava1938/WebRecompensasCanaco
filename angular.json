@@ -25,9 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.csss"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -120,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CanacoV3"
+    }
+  },
+  "defaultProject": "CanacoV3",
+  "cli": {
+    "analytics": "fab0200f-eaff-4b99-a889-727ac6098523"
+  }
 }
