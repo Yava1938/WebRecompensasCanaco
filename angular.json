@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CanacoV3": {
+    "CanacoV2": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/CanacoV3",
+            "outputPath": "dist/CanacoV2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,11 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -66,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "CanacoV3:build"
+            "browserTarget": "CanacoV2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "CanacoV3:build:production"
+              "browserTarget": "CanacoV2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "CanacoV3:build"
+            "browserTarget": "CanacoV2:build"
           }
         },
         "test": {
@@ -114,19 +115,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "CanacoV3:serve"
+            "devServerTarget": "CanacoV2:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "CanacoV3:serve:production"
+              "devServerTarget": "CanacoV2:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "CanacoV3",
+  "defaultProject": "CanacoV2",
   "cli": {
-    "analytics": "fab0200f-eaff-4b99-a889-727ac6098523"
+    "analytics": "9b5bb597-9432-472d-bf2b-3df95571bbb8"
   }
 }
