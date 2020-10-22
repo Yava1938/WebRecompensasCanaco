@@ -38,4 +38,13 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  public buttonAction2(buttonElement: HTMLElement): void {
+    switch (buttonElement.id) {
+      case 'guardar comercios': {
+        this.render.setProperty(buttonElement, 'id', 'ver comercios');
+        this.render.setStyle(this.linkElement.nativeElement, 'display', 'none');break;
+      }
+    }
+  }
+
 }
