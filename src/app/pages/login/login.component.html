@@ -1,21 +1,34 @@
 <app-navbar></app-navbar>
 
 <div class="container card" style="padding-top: 20px; width: 25rem;">
-    <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <h4 style="text-align: center;">Ingrese como Admin</h4>
+    <form class="form-signin" autocomplete="off" [formGroup]="forma" (ngSubmit)="onLogin()">
+      <h4 style="text-align: center;">Iniciar sesión</h4>
       <hr><br>
       <div class="form-group">
-      <input type="text" class="form-control form-control" placeholder="Usuario" required="true" autofocus="" formControlName="User">
+        <input type="email" class="form-control form-control" placeholder="Usuario" formControlName="usuario" [class.is-invalid]="usuarioNoValido">
+        <small *ngIf="usuarioNoValido" class="form-text text-danger ml-3">*Usuario obligatoria</small>
       <br>
-    </div>
+    </div> 
     <div class="form-group">
-      <input type="password" class="form-control form-control" placeholder="Contraseña" required="true" autofocus="" formControlName="Password">
+      <input type="password" class="form-control" placeholder="Contraseña" formControlName="password" [class.is-invalid]="contrasenaNoValido">
+      <small *ngIf="contrasenaNoValido" class="form-text text-danger ml-3">*Cotraseña obligatoria</small>
       <br></div>
-      <button type="submit" class="btn btn-lg btn-primary btn-block" routerLink="/home">Login</button><br>
+      <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button><br>
       <p style="text-align: center;">¿Olvidaste tu contraseña? <a href="#">Clic aquí</a></p><br>
     </form>
   </div>
   <br><br><br>
+
+  <hr>
+  <pre>
+    Estado del formulario: {{ forma.valid }}
+    <br>
+    Status: {{ forma.status }}
+  </pre>
+
+  <pre>
+    {{ forma.value | json}}
+  </pre>
   
 
 <app-footer></app-footer>
