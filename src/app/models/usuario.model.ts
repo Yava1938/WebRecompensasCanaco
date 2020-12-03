@@ -2,9 +2,12 @@
 
 export class UsuarioModel {
 
-    email: string;
-    password: string;
+    
     nombre: string;
+    apellido_paterno:string;
+    apellido_materno:string;
+    password: string;
+    email: string;
 
 }
 

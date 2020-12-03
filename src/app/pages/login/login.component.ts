@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,18 @@ import { Router } from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
   forma :FormGroup
-  userReq: string;
-  pass: string;
+  User = {
+    email: '',
+    password: '',
+    remember_me: false
+  }
+  error = '';
    
   constructor(private fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private authService : AuthService) {
     this.crearFormulario();
    }
 
@@ -35,15 +41,25 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-     this.userReq = this.forma.value.usuario;
-     this.pass    = this.forma.value.password;
-     console.log(this.userReq + this.pass);
-
-    if (this.forma.invalid) {
+     this.User.email    = this.forma.value.usuario;
+     this.User.password = this.forma.value.password;
+         if (this.forma.invalid) {
       return Object.values( this.forma.controls ).forEach( control =>{
         control.markAsTouched();
       });
     }
+    this.authService.singIn(this.User)
+        .subscribe(
+          res => {
+            console.log(res);
+            localStorage.setItem('token',res.data.access_token);
+            this.router.navigate(['/home']);
+          },
+          err => console.log(err)
+          
+        )
+
+
   }
   
 
