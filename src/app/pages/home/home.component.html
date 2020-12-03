@@ -1,7 +1,14 @@
 <app-navbar-home></app-navbar-home>
+
 <div class="container mt-5">
   
-            <div class="card-deck inline-block">
+<div class="row">
+  <div class="col">
+       <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar comercio...">
+  </div>
+</div>
+<hr>
+            <div class="card-deck inline-block mt-5">
                 <div class="card">
                   <img src="" class="card-img-top" alt="..." >
                   <div class="card-body">

@@ -17,7 +17,7 @@
           Comercios
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['/editar-comercio']">Registrar Comercio</a>
+          <a class="dropdown-item" [routerLink]="['/registrar-comercio']">Registrar Comercio</a>
           <a class="dropdown-item" [routerLink]="['/reporte']">Reporte</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="['/home']">Registrar Administrador</a>
@@ -25,6 +25,9 @@
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link ml-2" [routerLink]="['/about']" >About</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link ml-2" [routerLink]="['/perfil']" >Mi perfil</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" (click)="aut.logOut()" >Salir</a>
