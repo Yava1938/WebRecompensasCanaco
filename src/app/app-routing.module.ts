@@ -10,9 +10,13 @@ import { EditarComercioComponent } from './pages/editar-comercio/editar-comercio
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { RegistroComercioComponent } from './pages/registro-comercio/registro-comercio.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
+import { ComercioComponent } from "./pages/comercio/comercio.component";
+
+
 
 //Import Guards
 import { AuthGuard } from "./guards/auth.guard";
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,6 +24,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'editar-comercio', component: EditarComercioComponent, canActivate: [AuthGuard] },
+  { path: 'comercio/:id', component: ComercioComponent, canActivate: [AuthGuard] },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: 'registrar-comercio', component: RegistroComercioComponent, canActivate: [AuthGuard] },
   { path: 'reporte', component: ReporteComponent, canActivate: [AuthGuard] },

@@ -18,12 +18,23 @@ import { ReporteComponent } from './pages/reporte/reporte.component';
 import { AboutComponent } from './pages/about/about.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { FooterHomeComponent } from './components/shared/footer-home/footer-home.component';
+import { ComercioComponent } from './pages/comercio/comercio.component';
+import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 
 //Imports Guards
 import { AuthGuard } from "../app/guards/auth.guard";
 
 //Imports Services
 import { TokenService } from './services/token.service';
+
+//Imports pipes
+import { NoimagePipe } from './pipes/noimage.pipe';
+import { AdministradorComponent } from './pages/administrador/administrador.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -38,7 +49,13 @@ import { TokenService } from './services/token.service';
     EditarComercioComponent,
     ReporteComponent,
     AboutComponent,
-    NavbarHomeComponent
+    NavbarHomeComponent,
+    NoimagePipe,
+    FooterHomeComponent,
+    ComercioComponent,
+    TarjetasComponent,
+    AdministradorComponent,
+    
     
   ],
   imports: [
@@ -51,7 +68,7 @@ import { TokenService } from './services/token.service';
     
     
   ],
-  providers: [
+  providers: [ 
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

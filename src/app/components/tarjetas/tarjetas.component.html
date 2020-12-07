@@ -1,0 +1,26 @@
+<div (click)="verComercio( item )" class="card shadow-lg p-3 mb-5 bg-white rounded pointer" *ngFor="let item of items">
+  <div class="alert alert-warning" role="alert" *ngIf="items === 0">
+    No hay comercios registrados...!
+  </div>
+    <img [src]="item.imagen_path | noimage" class="card-img-top">
+    <div class="card-body">
+      <hr>
+          <h5 class="card-title">{{item.attributes.nombre}}</h5>
+          <p class="card-text">Correo: {{item.attributes.correo}} </p>
+          <p class="card-text">Dirección: {{item.attributes.direccion}} </p>
+          <p class="card-text">Teléfono: {{item.attributes.telefono}} </p>
+          <p class="card-text">Responsable: {{item.attributes.contacto}}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">
+        <div class="row">
+          <div class="col">
+            <p class="text-left">Caducidad de puntos:{{item.attributes.puntos_caducidad}} días</p>
+          </div>
+          <div class="col">
+            <p class="text-right">Caducidad de puntos: {{item.attributes.expirancion_ticket}} días</p>
+          </div>
+        </div>
+  </small>                    
+</div>
+  </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
+import { Admin } from 'src/app/models/Admin.model';
+import { User } from 'src/app/models/User.model';
 import { AuthService } from "../../services/auth.service";
 
 @Component({
@@ -11,11 +13,8 @@ import { AuthService } from "../../services/auth.service";
 export class LoginComponent implements OnInit {
   
   forma :FormGroup
-  User = {
-    email: '',
-    password: '',
-    remember_me: false
-  }
+  User : User = new User();
+  Admin : Admin = new Admin();
   error = '';
    
   constructor(private fb: FormBuilder,
@@ -53,6 +52,8 @@ export class LoginComponent implements OnInit {
           res => {
             console.log(res);
             localStorage.setItem('token',res.data.access_token);
+            localStorage.setItem('Admin',res.data.attributes);// aqui
+            
             this.router.navigate(['/home']);
           },
           err => console.log(err)

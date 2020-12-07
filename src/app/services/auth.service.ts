@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class AuthService {
+  info: any = {}
 
 private URL:string = 'http://canaco.demos.mx/api/auth/login';
 
@@ -28,5 +29,10 @@ private URL:string = 'http://canaco.demos.mx/api/auth/login';
    logOut(){
      localStorage.removeItem('token');
      this.router.navigate(['/login']);
+   }
+
+   getUser(){
+     this.info =  localStorage.getItem('Admin');
+     return this.info;
    }
 }

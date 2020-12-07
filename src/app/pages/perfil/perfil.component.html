@@ -1,5 +1,6 @@
 <app-navbar-home></app-navbar-home>
-<div class="container">
+<div class="container border border-dark mt-5 shadow-lg p-3 mb-5 bg-white rounded animated fadeIn">
+<div class="containerBox">
   <h3 class="text-center mt-5">Informacion del perfil</h3>
   <hr>
 </div>
@@ -43,8 +44,15 @@
         <input type="text" class="form-control" disabled placeholder="SuperAdministrador">
       </div>
     </div>
-    <div class="text-center mt-5">
-    <button type="submit" class="btn btn-primary">Guardar</button>
-  </div>
+    <div class="row mt-5 mb-5">
+      <div class="col">
+        <button [routerLink]="['/home']" class="btn btn-danger btn-block">Cancelar</button>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+      </div>
+    </div>
   </form>
 </div>
+</div>
+<app-footer-home></app-footer-home>

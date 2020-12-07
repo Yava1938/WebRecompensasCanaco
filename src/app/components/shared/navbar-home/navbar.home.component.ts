@@ -12,10 +12,12 @@ export class NavbarHomeComponent implements OnInit {
 
 
   aut : any;
-  img = 'https://lh3.googleusercontent.com/proxy/mEVq30VUd4vCFkbhvwDPeEVuiq9AEMrW30TvRNaodzi5QBThYQG_3ke8CRbEUssTi1Aa7-XOxHcowWLPQ_uKT0zrAJGjPVI8_qmCvBISycSFdlW9hlLT3T2ZiZQ';
+  user: any = {};
   constructor(private router: Router,
               private AuthService: AuthService) { 
-                this.aut = AuthService;
+                this.aut = AuthService; // Para acceder al metodo cerrar sesion
+                this.user = AuthService.getUser(); //Para obtener los valores del usuario
+                console.log(this.user.nombre);//Imprimir el nombre del usuario en consola
               }
 
   ngOnInit(): void {

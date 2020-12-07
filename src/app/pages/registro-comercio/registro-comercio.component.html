@@ -1,41 +1,75 @@
 <app-navbar-home></app-navbar-home>
+<div class="containerBox animated fadeIn">
 <div class="container">
-  <h3 class="text-center mt-5">Registro de comercios</h3>
+  <h1 class="text-center mt-5">Registro de comercios</h1>
   <hr>
-  <p class="font-weight-normal mt-2">A continuación ingrese los datos solicitados del nuevo comercio con el fin de afiliarlo</p>
+  <p class="font-weight-normal mt-2 text-center mb-5">A continuación ingrese los datos solicitados del nuevo comercio con el fin de afiliarlo al programa Recompensas CANACO</p>
 </div>
-<div class="container mt-4">
-  <form>
+<div class="container mt-4 col-7">
+  <form autocomplete="off" [formGroup]="forma" (ngSubmit) = "createComercio()">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>Nombre del comercio</label>
-        <input type="text" class="form-control" placeholder="Universidad Veracruzana">
+        <input type="text" class="form-control" placeholder="Universidad Veracruzana" formControlName="nameComercio" [class.is-invalid]="comercioInvalido">
       </div>
       <div class="form-group col-md-6">
         <label>Direccion</label>
-        <input type="text" class="form-control" placeholder="Av. Veracruz">
+        <input type="text" class="form-control" placeholder="Av. Veracruz" formControlName="direccionComercio" [class.is-invalid]="direccionInvalido"> 
       </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>teléfono</label>
-            <input type="text" class="form-control" placeholder="9211424613">
+            <input type="text" class="form-control" 
+            placeholder="9211424613" 
+            formControlName="telefonoComercio" 
+            [class.is-invalid]="telefonoInvalido">
           </div>
       <div class="form-group col-md-6">
         <label>Correo electronico</label>
-        <input type="email" class="form-control" placeholder="Universidad@uv.mx">
+        <input type="email" class="form-control" 
+        placeholder="Universidad@uv.mx" 
+        formControlName="correoComercio" 
+        [class.is-invalid]="correoInvalido">
       </div>
       <div class="form-group col-md-6">
         <label>Responsable</label>
-        <input type="text" class="form-control" placeholder="Vicerrector">
+        <input type="text" class="form-control" 
+        placeholder="Vicerrector" 
+        formControlName="responsableComercio" 
+        [class.is-invalid]="responsableInvalido">
       </div>
       <div class="form-group col-md-6">
         <label>RFC</label>
-        <input type="text" class="form-control" placeholder="UVE450101FM9">
+        <input type="text" class="form-control" 
+        placeholder="UVE450101FM9" 
+        formControlName="rfcComercio" 
+        [class.is-invalid]="rfcInvalido">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Vigencia de tickets en días</label>
+        <input type="text" class="form-control" 
+        placeholder="30" 
+        formControlName="vigtickComercio" 
+        [class.is-invalid]="vigtickInvalido">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Vigencia de puntos en días</label>
+        <input type="text" class="form-control" 
+        placeholder="30" 
+        formControlName="vigpunComercio" 
+        [class.is-invalid]="vigpunInvalido">
       </div>
     </div>
-    <div class="text-center mt-5">
-    <button type="submit" class="btn btn-primary">Guardar</button>
-  </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button [routerLink]="['/home']" class="btn btn-danger btn-block">Cancelar</button>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+      </div>
+    </div>
   </form>
 </div>
+</div>
+<app-footer-home></app-footer-home>

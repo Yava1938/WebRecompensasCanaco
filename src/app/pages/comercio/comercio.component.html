@@ -1,0 +1,307 @@
+<app-navbar-home></app-navbar-home>
+<div class="container mt-5">
+  <div class="alert alert-primary" role="alert" *ngIf="respuesta.length > 0">
+    {{respuesta}}
+  </div>
+    <div class="row">
+        <div class="col">
+            <img [src]="comercio.imagen_path | noimage" alt="">
+        </div>
+        <div class="col">
+            <h2 class="text-center">{{comercio.nombre | uppercase }}</h2>
+            <hr><br>
+        <p class="info">Dirección: {{comercio.direccion}}</p>
+        <p class="info">Correo: {{comercio.correo}}</p>
+        <p class="info">Responsable:{{comercio.contacto}}</p>
+        </div>
+    </div>
+    <hr class="mt-5">
+    <!-- Button trigger modal -->
+    <div class="container text-right mt-4">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Registrar administrador
+  </button>
+  <button type="button" class="btn btn-warning ml-2" data-toggle="modal" data-target="#exampleModal2">
+    Editar comercio
+  </button>
+  <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#exampleModal3">
+    Eliminar comercio
+  </button>
+  </div>
+  <div class="container mt-5">
+    <h3 class="text-center">Administradores del comercio</h3>
+    <hr>
+    <div class="containerBox text-center ml-5 mb-5 mt-5">
+    <div class="list-group list-group-horizontal-lg ml-5 mb-4" *ngFor="let admin of infoAdmin">
+      <li class="list-group-item" style="width: 700px;">{{admin.attributes.nombre}} 
+        {{admin.attributes.apellido_paterno}} {{admin.attributes.apellido_materno}}</li>
+      <a type="button"><li class="list-group-item"><i class="far fa-info-circle"></i></li></a>
+      <a type="button" (click)="getId(admin)" data-toggle="modal" data-target="#exampleModal5"><li class="list-group-item"><i class="fas fa-edit"></i></li></a>
+      <a type="button" (click)="getId(admin)" data-toggle="modal" data-target="#exampleModal4"><li class="list-group-item"><i class="fas fa-trash"></i></li></a> 
+    </div>
+  </div><br>
+  </div>
+</div>
+<app-footer-home></app-footer-home>
+  <!-- Modal registrar administrador -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Registrar Administrador</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-left">
+            <form autocomplete="off" [formGroup]="forma" (ngSubmit) = "createAdmin()">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" 
+                    placeholder="Rodrigo" 
+                    formControlName="nameAdmin" 
+                    [class.is-invalid]="nombreInvalido">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Apellido paterno</label>
+                    <input type="text" class="form-control" 
+                    placeholder="Morales" 
+                    formControlName="paternoAdmin" 
+                    [class.is-invalid]="paternoInvalido"> 
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Apellido materno</label>
+                    <input type="text" class="form-control" 
+                    placeholder="Vázquez" 
+                    formControlName="maternoAdmin" 
+                    [class.is-invalid]="maternoInvalido"> 
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Fecha de nacimiento</label>
+                    <input type="Date" class="form-control" 
+                    formControlName="fechaAdmin" 
+                    [class.is-invalid]="fechaInvalido">  
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Correo</label>
+                    <input type="text" class="form-control" 
+                    placeholder="Usuario@example.com" 
+                    formControlName="correoAdmin" 
+                    [class.is-invalid]="correoInvalido"> 
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Contraseña</label>
+                    <input type="password" class="form-control" 
+                    placeholder="Contraseña" 
+                    formControlName="contrasenaAdmin" 
+                    [class.is-invalid]="passwordInvalido"> 
+                  </div>
+                </div>
+                <div class="row mt-5 modal-footer">
+                  <div class="col">
+                    <button type="button" data-dismiss="modal" class="btn btn-danger btn-block">Cancelar</button>
+                  </div>
+                  <div class="col">
+                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                  </div>
+                </div>
+              </form>
+      </div>
+    </div>
+  </div>
+    </div>
+    
+<!-- Modal editar comercio -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Editar Comercio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <p class="mb-3">Asegurate de llenar todos los campos!</p>
+          <form autocomplete="off" [formGroup]="dataComercio" (ngSubmit) = "editComercio()">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label>Comercio</label>
+                  <input type="text" class="form-control" 
+                  value="{{comercio.nombre}}" 
+                  formControlName="nameComercio" 
+                  [class.is-invalid]="comercioInvalido">
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Dirección</label>
+                  <input type="text" class="form-control" 
+                  value="{{comercio.direccion}}" 
+                  formControlName="direccionComercio" 
+                  [class.is-invalid]="direccionComercioInvalido"> 
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Teléfono</label>
+                  <input type="text" class="form-control" 
+                  value="{{comercio.telefono}}" 
+                  formControlName="telefonoComercio" 
+                  [class.is-invalid]="telefonoComercioInvalido"> 
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Correo</label>
+                  <input type="text" class="form-control" 
+                  value="{{comercio.correo}}" 
+                  formControlName="correoComercio" 
+                  [class.is-invalid]="correoComercioInvalido"> 
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Contacto</label>
+                  <input type="text" class="form-control" 
+                  value="{{comercio.contacto}}" 
+                  formControlName="contactoComercio" 
+                  [class.is-invalid]="contactoComercioInvalido"> 
+                </div>
+                <div class="form-group col-md-6">
+                  <label>RFC</label>
+                  <input type="text" class="form-control" 
+                  value="{{comercio.rfc}}" 
+                  formControlName="rfcComercio" 
+                  [class.is-invalid]="rfcInvalido"> 
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Caducidad de tickets</label>
+                  <input type="text" class="form-control" 
+                  value="{{comercio.expirancion_ticket}}" 
+                  formControlName="caducidadTicket" 
+                  [class.is-invalid]="ticketInvalido"> 
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Caducidad de puntos</label>
+                  <input type="text" class="form-control" 
+                  value="{{comercio.puntos_caducidad}}" 
+                  formControlName="caducidadPuntos" 
+                  [class.is-invalid]="puntoInvalido"> 
+                </div>
+              </div>
+              <div class="row mt-5 modal-footer">
+                <div class="col">
+                  <button type="button" data-dismiss="modal" class="btn btn-danger btn-block">Cancelar</button>
+                </div>
+                <div class="col">
+                  <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                </div>
+              </div>
+            </form>
+    </div>
+  </div>
+</div>
+  </div>
+
+<!-- Modal eliminar comercio -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Eliminar Comercio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+             <p>Estas a punto de eliminar esté comercio ¿Deseas continuar?</p> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="eliminarComercio()">Eliminar comercio</button>
+      </div>
+  </div>
+</div>
+  </div>
+
+  <!-- Modal eliminar Administrador -->
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Eliminar Administrador</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+             <p>Estas a punto de eliminar esté administrador ¿Deseas continuar?</p> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="eliminarAdmin()">Eliminar administrador</button>
+      </div>
+  </div>
+</div>
+  </div>
+
+   <!-- Modal editar administrador -->
+   <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Editar Administrador</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-left">
+          <p class="mb-3">Asegurate de llenar todos los campos!</p>
+            <form autocomplete="off" [formGroup]="forma" (ngSubmit) = "editarAdmin()">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control"  
+                    formControlName="nameAdmin" 
+                    [class.is-invalid]="nombreInvalido">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Apellido paterno</label>
+                    <input type="text" class="form-control"  
+                    formControlName="paternoAdmin" 
+                    [class.is-invalid]="paternoInvalido"> 
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Apellido materno</label>
+                    <input type="text" class="form-control" 
+                    formControlName="maternoAdmin" 
+                    [class.is-invalid]="maternoInvalido"> 
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Fecha de nacimiento</label>
+                    <input type="Date" class="form-control"
+                    formControlName="fechaAdmin"   
+                    [class.is-invalid]="fechaInvalido">  
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Correo</label>
+                    <input type="text" class="form-control"  
+                    formControlName="correoAdmin" 
+                    [class.is-invalid]="correoInvalido"> 
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Contraseña</label>
+                    <input type="password" class="form-control" 
+                    placeholder="Contraseña" 
+                    formControlName="contrasenaAdmin" 
+                    [class.is-invalid]="passwordInvalido"> 
+                  </div>
+                </div>
+                <div class="row mt-5 modal-footer">
+                  <div class="col">
+                    <button type="button" data-dismiss="modal" class="btn btn-danger btn-block">Cancelar</button>
+                  </div>
+                  <div class="col">
+                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                  </div>
+                </div>
+              </form>
+      </div>
+    </div>
+  </div>
+    </div>
+
