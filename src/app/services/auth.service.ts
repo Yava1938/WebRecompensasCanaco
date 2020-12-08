@@ -28,6 +28,7 @@ private URL:string = 'http://canaco.demos.mx/api/auth/login';
 
    logOut(){
      localStorage.removeItem('token');
+     localStorage.removeItem('Admin');
      this.router.navigate(['/login']);
    }
 

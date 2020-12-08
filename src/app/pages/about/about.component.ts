@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  img = 'https://psmnoticias.com/wp-content/uploads/2020/04/uv.jpg'
   constructor() { }
 
   ngOnInit(): void {

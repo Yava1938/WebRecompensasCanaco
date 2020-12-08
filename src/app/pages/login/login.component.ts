@@ -50,10 +50,9 @@ export class LoginComponent implements OnInit {
     this.authService.singIn(this.User)
         .subscribe(
           res => {
-            console.log(res);
             localStorage.setItem('token',res.data.access_token);
-            localStorage.setItem('Admin',res.data.attributes);// aqui
-            
+            let sesion = (res.data);
+            localStorage.setItem('Admin',JSON.stringify(sesion));// aqui
             this.router.navigate(['/home']);
           },
           err => console.log(err)

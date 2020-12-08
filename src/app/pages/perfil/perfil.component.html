@@ -19,21 +19,21 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <label>Usuario</label>
-        <input type="email" class="form-control" placeholder="Usuario@example.com">
+        <input type="email" class="form-control" value="{{obj.attributes.email}}">
       </div>
       <div class="form-group col-md-4">
         <label>Nombre</label>
-        <input type="text" class="form-control" placeholder="Javier">
+        <input type="text" class="form-control" value="{{obj.attributes.nombre}}">
       </div>
       <div class="form-group col-md-4">
         <label>Apellido paterno</label>
-        <input type="text" class="form-control" placeholder="Gonzalez">
+        <input type="text" class="form-control" value="{{obj.attributes.apellido_paterno}}">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label>Apellido materno</label>
-        <input type="text" class="form-control" placeholder="De la fuente">
+        <input type="text" class="form-control" placeholder="{{obj.attributes.apellido_materno}}">
       </div>
       <div class="form-group col-md-4">
         <label>Fecha de nacimiento</label>
@@ -41,7 +41,7 @@
       </div>
       <div class="form-group col-md-4">
         <label>Rol</label>
-        <input type="text" class="form-control" disabled placeholder="SuperAdministrador">
+        <input type="text" class="form-control" disabled value="{{obj.role}}">
       </div>
     </div>
     <div class="row mt-5 mb-5">

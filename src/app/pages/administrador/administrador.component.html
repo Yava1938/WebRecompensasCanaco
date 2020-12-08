@@ -1,1 +1,16 @@
-<p>administrador works!</p>
+<app-navbar-home></app-navbar-home>
+
+<div class="container">
+<div class="container mt-4 mb-5">
+    <div class="card d-flex align-items-center mx-auto" style="width: 22rem;">
+        <img [src]="infoAdmin.avatar_path | noimage" class="card-img-top" alt="...">
+        <div class="card-body">
+            <li class="list-group-item">Nombre: {{infoAdmin.nombre}} {{infoAdmin.apellido_paterno}} </li>
+            <li class="list-group-item">Correo: {{infoAdmin.email}}</li>
+            <li class="list-group-item">Fecha de nacimiento: {{infoAdmin.fecha_nacimiento}}</li>
+        </div>
+      </div>
+</div>
+</div>
+
+<app-footer-home></app-footer-home>

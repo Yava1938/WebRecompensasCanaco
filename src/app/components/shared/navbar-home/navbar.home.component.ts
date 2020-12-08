@@ -13,11 +13,12 @@ export class NavbarHomeComponent implements OnInit {
 
   aut : any;
   user: any = {};
+  objeto: any = {}
   constructor(private router: Router,
               private AuthService: AuthService) { 
                 this.aut = AuthService; // Para acceder al metodo cerrar sesion
                 this.user = AuthService.getUser(); //Para obtener los valores del usuario
-                console.log(this.user.nombre);//Imprimir el nombre del usuario en consola
+                this.objeto = JSON.parse(this.user)
               }
 
   ngOnInit(): void {

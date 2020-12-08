@@ -101,7 +101,6 @@ idComercio : number;
 getComercio(id:number){
   this.servicio.getComercio(id)
   .subscribe( comercio =>{
-    console.log(comercio);
     this.comercio = comercio;
   })
 }
@@ -184,11 +183,11 @@ getAdmins(){
   this.servicio.getAdmins(this.idComercio)
     .subscribe( ( data: any) => {
       this.infoAdmin = data;
-      console.log(this.infoAdmin);
     }); 
   }
   getId(admin){
     this.idAdmin = admin['id'];
+    console.log(this.idAdmin)
   }
 
   eliminarAdmin(){
@@ -218,6 +217,10 @@ this.servicio.editarAdmin(this.idAdmin ,this.admin)
 },
 err => console.log(err)
 );
+  }
+  searchAdmin(admin){
+    let id = admin['id'];
+    this.router.navigate(['/admin/',id])
   }
 
 }

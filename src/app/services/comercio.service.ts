@@ -11,11 +11,11 @@ export class ComercioService {
   private URLAdmins = 'http://canaco.demos.mx/api/admins/'
 
   constructor(private http: HttpClient) { 
-    console.log('Servicio Listo');
+
   }
 
   //Metodo para Crear comercio
-  createComercio(comercio){
+  createComercio(comercio: any){
     return this.http.post<any>(this.URL, comercio);
   }
   //Metodo para editar comercio
@@ -36,11 +36,15 @@ export class ComercioService {
     return this.http.delete<any>(this.URL + `/${id}`);
   }
   //Metodo para crear administrador de comercio
-  createAdmin(id, Admin:any){
+  createAdmin(id: number, Admin:any){
     return this.http.post<any>(this.URL+ `/${id}`+ '/admins', Admin );
   }
-  editarAdmin(id, Admin:any){
+  editarAdmin(id: number, Admin:any){
     return this.http.patch<any>(this.URLAdmins+ `${id}`, Admin );
+  }
+  getAdmin(id: number){
+    return this.http.get<any>(this.URLAdmins+ `${id}`)
+    .pipe( map (data => data['data'].attributes));
   }
   getAdmins(id:number){
     return this.http.get<any>(this.URL+ `/${id}`+ '/admins')

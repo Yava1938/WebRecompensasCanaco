@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from "../../services/auth.service";
 
 
 @Component({
@@ -8,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  
+   auth : any = {}
+   obj  : any = {}
 
-
-  constructor() { }
+  constructor(private router: Router,
+    private AuthService: AuthService) {
+                this.auth = AuthService.getUser(); // Para acceder al metodo cerrar sesion
+                this.obj = JSON.parse(this.auth);
+     }
 
   ngOnInit(): void {
   }

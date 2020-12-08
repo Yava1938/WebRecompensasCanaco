@@ -11,6 +11,7 @@ export class HomeComponent  {
 
   tarjetas :any[] = []
   
+  
   constructor( private comer: ComercioService) {
     this.comer.getComercios()
     .subscribe( ( data: any) => {

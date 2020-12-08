@@ -35,7 +35,7 @@
     <div class="list-group list-group-horizontal-lg ml-5 mb-4" *ngFor="let admin of infoAdmin">
       <li class="list-group-item" style="width: 700px;">{{admin.attributes.nombre}} 
         {{admin.attributes.apellido_paterno}} {{admin.attributes.apellido_materno}}</li>
-      <a type="button"><li class="list-group-item"><i class="far fa-info-circle"></i></li></a>
+      <a type="button" (click)="searchAdmin(admin)"><li class="list-group-item"><i class="far fa-info-circle"></i></li></a>
       <a type="button" (click)="getId(admin)" data-toggle="modal" data-target="#exampleModal5"><li class="list-group-item"><i class="fas fa-edit"></i></li></a>
       <a type="button" (click)="getId(admin)" data-toggle="modal" data-target="#exampleModal4"><li class="list-group-item"><i class="fas fa-trash"></i></li></a> 
     </div>

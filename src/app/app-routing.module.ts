@@ -11,11 +11,12 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { RegistroComercioComponent } from './pages/registro-comercio/registro-comercio.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
 import { ComercioComponent } from "./pages/comercio/comercio.component";
-
+import { AdministradorComponent } from './pages/administrador/administrador.component';
 
 
 //Import Guards
 import { AuthGuard } from "./guards/auth.guard";
+
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'editar-comercio', component: EditarComercioComponent, canActivate: [AuthGuard] },
   { path: 'comercio/:id', component: ComercioComponent, canActivate: [AuthGuard] },
+  { path: 'admin/:id', component: AdministradorComponent, canActivate: [AuthGuard] },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: 'registrar-comercio', component: RegistroComercioComponent, canActivate: [AuthGuard] },
   { path: 'reporte', component: ReporteComponent, canActivate: [AuthGuard] },
